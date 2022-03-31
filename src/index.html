@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Packs amenities</title>
+  </head>
+  <body id="parent">
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        get_Deportistas()
+      });
+      function RenderTable(deportista) {
+        let tabHeader = `
+            <a href="/api/v1/deportistas"><button class="btn btn-outline-secondary mt-4 mx-4">See JSON</button></a>
+            <h1 class="text-center">Deportista List</h1>
+            <table class="table table-striped table-dark  table-bordered p-2 mt-5">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th><button onclick="createLayoutDeportista()" class="btn btn-success">Add Deportista</button></th>
+                    </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Phone</th>
+                        <th>Age</th>
+                        <th>Show</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                <tbody>`;
+
+        deportista.forEach((e) => {
+          tabHeader += `
+                    <tr>
+                        <th>${e.nombre}</th>
+                        
+                    </tr>`;
+        });
+        return tabHeader + "</tbody></table>";
+      }
+      function get_Deportistas() {
+          fetch('http://localhost:3001/packs/allPacks')
+          .then(res => res.json())
+          .then(data => {
+              document.getElementById("parent").innerHTML = RenderTable(data);
+          })
+      }
+    </script>
+  </body>
+</html>
