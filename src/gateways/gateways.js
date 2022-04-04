@@ -55,6 +55,5 @@ async function createPack(json) {
     },
     body: JSON.stringify(json),
   });
-  console.log(response);
   reload();
 }
