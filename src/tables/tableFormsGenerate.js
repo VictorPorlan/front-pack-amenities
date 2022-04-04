@@ -13,3 +13,7 @@ function reloadDetails(nombre) {
 function reloadCreate() {
       document.getElementById("parent").innerHTML = createForm();
 }
+
+function reloadCreateItem() {
+  document.getElementById("parent").innerHTML = createItemForm();
+}

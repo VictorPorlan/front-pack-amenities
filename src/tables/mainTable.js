@@ -1,6 +1,7 @@
 function renderTable(packs) {
   let tabHeader = `
-        <button class="btn btn-success mt-4 mx-4" onclick="reloadCreate()">Crear</button>
+        <button class="btn btn-success mt-4 mx-4" onclick="reloadCreate()">Crear pack</button>
+        <button class="btn btn-success mt-4 mx-4" onclick="reloadCreateItem()">Crear item</button>
         <h1 class="text-center" style="color: white;">Pack amenities</h1>
         <table class="table table-striped table-dark table-bordered p-2 mt-5">
               <thead>

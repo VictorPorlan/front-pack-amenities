@@ -46,9 +46,7 @@ async function deletePack(nombre) {
 }
 
 async function createPack(json) {
-  debugger;
-  console.log(JSON.stringify(json))
-  let response = await fetch(`http://localhost:3001/packs/create`, {
+  await fetch(`http://localhost:3001/packs/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
