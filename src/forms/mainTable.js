@@ -1,26 +1,23 @@
-document.addEventListener("DOMContentLoaded", () => {
-    reload()
-  });
-
-  function renderTable(packs) {
-    let tabHeader = `
-          <h1 class="text-center">Pack amenities</h1>
-          <table class="table table-striped table-dark  table-bordered p-2 mt-5">
+function renderTable(packs) {
+  let tabHeader = `
+        <button class="btn btn-success mt-4 mx-4" onclick="reloadCreate()">Crear</button>
+        <h1 class="text-center" style="color: white;">Pack amenities</h1>
+        <table class="table table-striped table-dark table-bordered p-2 mt-5">
               <thead>
                   <tr>
                       <th>Nombre</th>
                       <th>Calidad</th>
-                      <th>Precio</th>
+                      <th>Precio</th> 
                       <th>Vendido</th>
                       <th>Abierto</th>
                       <th>Comprar</th>
                       <th>Abrir</th>
-                      <th>Detalles</th>
+                      <th>Items</th>
                   </tr>
               <tbody>`;
 
-    packs.forEach((e) => {
-      tabHeader += `
+  packs.forEach((e) => {
+    tabHeader += `
                   <tr>
                       <th>${e.nombre}</th>
                       <th>${e.calidad}</th>
@@ -29,9 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
                       <th>${e.abierto}</th>
                       ${buyButton(e)}                          
                       ${openButton(e)}                          
-                      <th><button class="btn btn-danger">Detalles</buttons> </th>
+                      ${detailsButton(e)}
                   </tr>`;
-    });
-    return tabHeader;
-  }
- 
+  });
+  return tabHeader;
+}
