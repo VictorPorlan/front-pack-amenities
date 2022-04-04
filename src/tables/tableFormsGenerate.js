@@ -4,6 +4,12 @@ function reload() {
       });
 }
 
+function reloadTableItems() {
+  getAllItems().then((x) => {
+      document.getElementById("parent").innerHTML = renderItemTable(x);
+    });
+}
+
 function reloadDetails(nombre) {
     getOnePack(nombre).then((x) => {
         document.getElementById("parent").innerHTML = renderDetailsTable(x);
@@ -17,3 +23,4 @@ function reloadCreate() {
 function reloadCreateItem() {
   document.getElementById("parent").innerHTML = createItemForm();
 }
+

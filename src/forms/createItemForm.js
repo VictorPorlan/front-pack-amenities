@@ -1,7 +1,7 @@
 function createItemForm(){
     let form = `
-    <button class="btn btn-success mt-4 mx-4" onclick="reload()">Volver</button>
-    <form style="width:500px; margin:20px" onsubmit="parseItemForm()">
+    <button class="btn btn-success mt-4 mx-4" onclick="reloadTableItems()">Volver</button>
+    <form style="width:500px; margin:20px" onsubmit="parseItemForm()" id="itemsForm">
 
     <div class="form-group" style="width:500px; margin:20px">
       <label style="color: white;">Nombre</label>
@@ -24,17 +24,17 @@ function createItemForm(){
 
     <div class="form-group" style="width:500px; margin:20px">
     <label style="color: white;">Demanda</label>
-    <input type="number" class="form-control" id="createItemDemanda" placeholder="Demanda" required>
+    <input type="number" class="form-control" id="createItemDemanda" placeholder="Demanda" required max="100" min="0">
     </div>
     
     <div class="form-group" style="width:500px; margin:20px">
         <label style="color: white;">Calidad</label>
-        <input type="number" class="form-control" id="createItemCalidad" placeholder="Calidad" required>
+        <input type="number" class="form-control" id="createItemCalidad" placeholder="Calidad" required max="50" min="0">
     </div>
 
     <div class="form-group" style="width:500px; margin:20px">
         <label style="color: white;">Cantidad</label>
-        <input type="number" class="form-control" id="createItemCantidad" placeholder="Cantidad" required>
+        <input type="number" class="form-control" id="createItemCantidad" placeholder="Cantidad" required min="0">
     </div>
     <button type="submit" class="btn btn-primary" style="width:500px; margin:20px">Crear</button>
   </form>
@@ -46,7 +46,7 @@ function parseItemForm() {
     let data = {
         nombre : document.getElementById('createItemNombre').value,
         precio : document.getElementById('createItemPrecio').value,
-        calidad : document.getElementById('createItemCantidad').value,
+        cantidad : document.getElementById('createItemCantidad').value,
         material : document.getElementById('createItemMaterial').value,
         demanda : document.getElementById('createItemDemanda').value,
         calidad : document.getElementById('createItemCalidad').value,

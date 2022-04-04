@@ -16,6 +16,6 @@ async function createItem(json){
       },
       body: JSON.stringify(json),
     });
-    reload();
+    reloadTableItems();
 }
 

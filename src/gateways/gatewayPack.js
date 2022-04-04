@@ -19,12 +19,12 @@ async function getOnePack(nombre) {
 }
 
 async function buyPack(nombre) {
-  await fetch(`http://localhost:3001/packs/buy/${nombre}`);
+  await fetch(`http://localhost:3001/packs/buy/${nombre}`).then((x) => reload())
   reload();
 }
 
 async function openPack(nombre) {
-  await fetch(`http://localhost:3001/packs/open/${nombre}`);
+  await fetch(`http://localhost:3001/packs/open/${nombre}`).then((x) => reload())
   reload();
 }
 
@@ -54,4 +54,28 @@ async function createPack(json) {
     body: JSON.stringify(json),
   });
   reload();
+}
+
+async function packAddFavourite(nombre){
+  let tempStorage = JSON.parse(localStorage.getItem('fav'))
+  if(tempStorage !== null){
+    localStorage.setItem('fav', JSON.stringify([nombre, ...tempStorage]))
+    reload()
+  }
+  else{
+    localStorage.setItem('fav', JSON.stringify([nombre]))
+    reload()
+  }
+}
+
+async function packRemoveFavourite(nombre){
+  let tempStorage = JSON.parse(localStorage.getItem('fav'))
+  if(tempStorage !== null){
+    let result = tempStorage.filter((x) => x !== nombre)
+    localStorage.setItem('fav', JSON.stringify(result))
+    reload()
+  }
+  else{
+    return
+  }
 }

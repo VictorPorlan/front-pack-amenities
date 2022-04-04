@@ -15,7 +15,7 @@ const openButton = (pack) => {
 };
 
 const detailsButton = (pack) => {
-  return `<th><button class="btn btn-danger" onclick="reloadDetails('${pack.nombre}')"}>Items</buttons> </th>`;
+  return `<th><button class="btn btn-danger" onclick="reloadDetails('${pack.nombre}')"}>Detalles</buttons> </th>`;
 };
 
 const useItemButton = (pack, index) => {
@@ -31,3 +31,13 @@ const useAllItemsButton = (pack) => {
     : "style='display:none;'"}
     >Usar todos</button>`;
 };
+
+const favButton = (nombre) => {
+  let tempStorage = JSON.parse(localStorage.getItem('fav'))
+  if(tempStorage !== null){
+    return tempStorage.includes(nombre) ? filledHeart(nombre) : heart(nombre)
+  }
+  else {
+    return heart(nombre)
+  }
+}
